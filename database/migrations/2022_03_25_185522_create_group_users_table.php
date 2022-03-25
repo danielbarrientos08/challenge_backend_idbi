@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGroupsUsersTable extends Migration
+class CreateGroupUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateGroupsUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('groups_users', function (Blueprint $table) {
+        Schema::create('group_users', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('group_id');
             $table->unsignedBigInteger('user_id');
