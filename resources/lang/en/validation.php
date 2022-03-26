@@ -129,6 +129,7 @@ return [
     'uploaded' => 'The :attribute failed to upload.',
     'url' => 'The :attribute must be a valid URL.',
     'uuid' => 'The :attribute must be a valid UUID.',
+    'not_in_group'=> 'El usuario ya se encuentra en el grupo.',
 
     /*
     |--------------------------------------------------------------------------

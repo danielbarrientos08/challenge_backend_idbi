@@ -9,5 +9,10 @@ class Group extends Model
 {
     use HasFactory;
 
-    protected $table = 'group';
+    protected $table = 'groups';
+
+    protected $casts = [
+        'created_at' => 'date:Y-m-d H:i:s',
+        'updated_at' => 'date:Y-m-d H:i:s',
+    ];
 }

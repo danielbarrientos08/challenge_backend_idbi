@@ -10,7 +10,7 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-    public function register(UserRegisterRequest $request)
+    public function registerUser(UserRegisterRequest $request)
     {
         $user = new User();
         $user->name = $request->name;

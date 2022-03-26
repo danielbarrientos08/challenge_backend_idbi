@@ -3,8 +3,10 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\NotInGroup;
+use Illuminate\Validation\Rules\NotIn;
 
-class UserRegisterRequest extends FormRequest
+class JoinGroupRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +26,14 @@ class UserRegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'bail|required|max:100',
-            'email'=>'bail|required|email|max:100|unique:users',
-            'password'=>'bail|required|max:50',
-            'confirm_password'=>'bail|required|same:password',
+            'group_id' =>['required', new NotInGroup]
         ];
     }
 
-
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'group_id' => $this->route('group_id'),
+        ]);
+    }
 }
