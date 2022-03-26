@@ -18,7 +18,7 @@ class GroupController extends Controller
         return response()->json([
             'status'=> 'success',
             'groups'=> $groups
-        ]);
+        ],200);
     }
 
     public function joinGroup(JoinGroupRequest $request,  $id)
@@ -34,7 +34,7 @@ class GroupController extends Controller
             'status'=>'success',
             'message'=>'Se unió al grupo correctamente',
             'groupUser'=> $groupUser
-        ]);
+        ],200);
     }
 
 
@@ -46,7 +46,8 @@ class GroupController extends Controller
 
         return response()->json([
             'status'=>'success',
+            'group'=> $group,
             'notes' => $notes
-        ]);
+        ],200);
     }
 }
