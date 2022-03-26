@@ -15,4 +15,14 @@ class Image extends Model
         'created_at' => 'date:Y-m-d H:i:s',
         'updated_at' => 'date:Y-m-d H:i:s',
     ];
+
+    protected $appends = ['url_img'];
+    //accessors
+   public function getUrlImgAttribute()
+   {
+       if($this->name == null || $this->name == ''){
+           return '';
+       }
+       return env('APP_URL').'/storage/'.$this->name;
+   }
 }

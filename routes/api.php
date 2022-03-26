@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GroupController;
+use App\Http\Controllers\NoteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +18,9 @@ use App\Http\Controllers\GroupController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 Route::post('/login',[AuthController::class,'login']);
 Route::post('/users/register',[UserController::class,'registerUser']);
@@ -29,6 +30,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/groups',[GroupController::class,'listGroups']);
     Route::post('/groups/{group_id}/join',[GroupController::class,'joinGroup']);
     Route::get('/groups/{group_id}/notes',[GroupController::class,'listNotes']);
+    Route::post('/notes/register',[NoteController::class,'registerNote']);
 
 });
 
