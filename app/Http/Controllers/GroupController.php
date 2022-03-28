@@ -8,12 +8,18 @@ use App\Models\Group;
 use App\Models\Note;
 use App\Models\GroupUser;
 use App\Http\Requests\JoinGroupRequest;
+use Illuminate\Database\Eloquent\Builder;
 
 class GroupController extends Controller
 {
     public function listGroups(Request $request)
     {
-        $groups = Group::paginate(10);
+        $user_id = Auth::user()->id;
+
+        $groups = Group::withCount(['notes','groupUsers'])
+                        ->with(['groupUsers' => function ($query) use ($user_id) {
+                            $query->select('user_id','id','group_id')->where('user_id', $user_id);
+                        }])->paginate(10);
 
         return response()->json([
             'status'=> 'success',

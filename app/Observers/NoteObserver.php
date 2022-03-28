@@ -17,7 +17,7 @@ class NoteObserver
 
     public function created(Note $note ): void
     {
-        $this->noteService->CreateImages($note);
+        $this->noteService->createImages($note);
         $this->noteService->sendEmails($note);
     }
 

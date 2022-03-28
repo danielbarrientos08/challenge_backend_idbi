@@ -44,4 +44,14 @@ class User extends Authenticatable
         'created_at' => 'date:Y-m-d H:i:s',
         'updated_at' => 'date:Y-m-d H:i:s',
     ];
+
+    public function groups()
+    {
+        return $this->belongsToMany(Group::class, 'group_users', 'user_id', 'group_id');
+    }
+
+    public function notes()
+    {
+        return $this->hasMany(Note::class);
+    }
 }

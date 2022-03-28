@@ -15,4 +15,19 @@ class Group extends Model
         'created_at' => 'date:Y-m-d H:i:s',
         'updated_at' => 'date:Y-m-d H:i:s',
     ];
+
+    public function notes()
+    {
+        return $this->hasMany(Note::class);
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'group_users', 'user_id', 'group_id');
+    }
+
+    public function groupUsers()
+    {
+        return $this->hasMany(GroupUser::class);
+    }
 }

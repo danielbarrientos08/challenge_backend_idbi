@@ -19,7 +19,7 @@ class NoteService
         $this->request = $request;
     }
 
-    public function sendEmails(Note $note)
+    public function sendEmails(Note $note): void
     {
         $groupUsers = GroupUser::select('user_id')
                                 ->where('group_id',$note->group_id)
@@ -36,7 +36,7 @@ class NoteService
         }
     }
 
-    public function createImages(Note $note )
+    public function createImages(Note $note ): void
     {
         foreach ($this->request->file('images') as $key => $item)
         {
