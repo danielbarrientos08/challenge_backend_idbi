@@ -13,10 +13,18 @@ class Note extends Model
 
     protected $with = ['images'];
 
+    protected $fillable = [
+        'title',
+        'description',
+        'group_id',
+        'user_id'
+    ];
+
     protected $casts = [
         'created_at' => 'date:Y-m-d H:i:s',
         'updated_at' => 'date:Y-m-d H:i:s',
     ];
+
 
     public function images()
     {

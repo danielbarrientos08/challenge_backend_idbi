@@ -33,7 +33,7 @@ class JoinGroupRequest extends FormRequest
     protected function prepareForValidation()
     {
         $this->merge([
-            'group_id' => $this->route('group_id'),
+            'group_id' => $this->route('id'),
         ]);
     }
 }

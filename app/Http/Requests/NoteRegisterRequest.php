@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Str;
 
 class NoteRegisterRequest extends FormRequest
 {
@@ -30,5 +31,13 @@ class NoteRegisterRequest extends FormRequest
             'images.*'=> [ 'bail','sometimes','nullable','image','max:2048'],
 
         ];
+    }
+
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'title' => Str::title($this->title),
+            'description' => Str::ucfirst($this->description),
+        ]);
     }
 }

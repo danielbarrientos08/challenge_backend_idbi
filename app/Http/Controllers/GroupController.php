@@ -21,7 +21,7 @@ class GroupController extends Controller
         ],200);
     }
 
-    public function joinGroup(JoinGroupRequest $request,  $id)
+    public function joinGroup(JoinGroupRequest $request,  $id )
     {
         $group = Group::findOrfail($id);
 

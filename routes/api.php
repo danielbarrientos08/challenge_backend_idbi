@@ -28,8 +28,8 @@ Route::post('/users/register',[UserController::class,'registerUser']);
 Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::get('/groups',[GroupController::class,'listGroups']);
-    Route::post('/groups/{group_id}/join',[GroupController::class,'joinGroup']);
-    Route::get('/groups/{group_id}/notes',[GroupController::class,'listNotes']);
+    Route::post('/groups/{id}/join',[GroupController::class,'joinGroup']);
+    Route::get('/groups/{id}/notes',[GroupController::class,'listNotes']);
     Route::post('/notes/register',[NoteController::class,'registerNote']);
 
 });
