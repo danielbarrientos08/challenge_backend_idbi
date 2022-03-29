@@ -4,6 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Str;
+use App\Models\GroupUser;
+use Illuminate\Support\Facades\Auth;
 
 class NoteRegisterRequest extends FormRequest
 {
@@ -14,7 +16,15 @@ class NoteRegisterRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        $group_users = GroupUser::where('user_id',Auth::user()->id)->where('group_id',$this->group_id)->first();
+
+        if($group_users){
+            return true;
+        }
+        else{
+            return false;
+        }
+
     }
 
     /**

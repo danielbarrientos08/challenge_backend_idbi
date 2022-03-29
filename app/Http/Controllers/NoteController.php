@@ -13,8 +13,6 @@ class NoteController extends Controller
 {
     public function registerNote(NoteRegisterRequest $request)
     {
-
-
         try {
 
             DB::beginTransaction();
