@@ -148,6 +148,9 @@ return [
     */
 
     'attributes' => [
+        'title'=>'título',
+        'description'=>'descripción',
+        'images'=>'imágenes',
         'email'=>'email',
         'name'=>'nombre',
         'password'=>'contraseña',
