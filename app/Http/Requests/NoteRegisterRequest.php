@@ -25,9 +25,9 @@ class NoteRegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'=> ['required','max:200'],
-            'description'=> ['required'],
-            'group_id'=> ['required','exists:groups,id'],
+            'title'=> ['bail','required','max:200'],
+            'description'=> ['bail','required','min:10'],
+            'group_id'=> ['bail','required','exists:groups,id'],
             'images.*'=> [ 'bail','sometimes','nullable','image','max:2048'],
 
         ];

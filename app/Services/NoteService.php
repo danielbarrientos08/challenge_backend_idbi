@@ -38,17 +38,21 @@ class NoteService
 
     public function createImages(Note $note ): void
     {
-        foreach ($this->request->file('images') as $key => $item)
+        if(! empty($this->request->file('images')) && count($this->request->file('images')) >0)
         {
+            foreach ($this->request->file('images') as $key => $item)
+            {
 
-            $imgName =  Str::slug(($note->title)).'_'.Str::random(6).'.'.$item->getClientOriginalExtension();
+                $imgName =  Str::slug(($note->title)).'_'.Str::random(6).'.'.$item->getClientOriginalExtension();
 
-            $img = new Image();
-            $img->name = $imgName;
-            $img->note_id = $note->id;
-            $img->save();
+                $img = new Image();
+                $img->name = $imgName;
+                $img->note_id = $note->id;
+                $img->save();
 
-            Storage::disk('public')->putFileAs('/', $item , $imgName);
+                Storage::disk('public')->putFileAs('/', $item , $imgName);
+            }
         }
+
     }
 }

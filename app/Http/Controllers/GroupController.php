@@ -48,7 +48,7 @@ class GroupController extends Controller
     {
         $group = Group::findOrfail($id);
 
-        $notes = Note::with('images')->where('group_id',$group->id)->paginate(10);
+        $notes = Note::with('images')->where('group_id',$group->id)->orderBy('id','DESC')->paginate(50);
 
         return response()->json([
             'status'=>'success',

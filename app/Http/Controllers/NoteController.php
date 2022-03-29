@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Note;
 use App\Http\Requests\NoteRegisterRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,6 +13,8 @@ class NoteController extends Controller
 {
     public function registerNote(NoteRegisterRequest $request)
     {
+
+
         try {
 
             DB::beginTransaction();
